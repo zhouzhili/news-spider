@@ -1,7 +1,7 @@
 /**
  * Created by ZZl.
  * DateTime: 2018/4/9 17:33
- * Description：
+ * Description：开源中国新闻
  */
 const ajax=require('./spiderCommon').ajax;
 const cheerio = require('cheerio');
@@ -23,9 +23,17 @@ function getOsChinaNewsList() {
                     link: link
                 });
             });
-            resolve(newsObj);
+            resolve({
+                data: newsObj,
+                message: '',
+                succeed: true
+            });
         }).catch(err => {
-            reject(err);
+            resolve({
+                data: [],
+                message: err,
+                succeed: false
+            });
         })
     })
 }

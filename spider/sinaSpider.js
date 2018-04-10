@@ -1,7 +1,7 @@
 /**
  * Created by ZZl.
  * DateTime: 2018/4/9 11:23
- * Description：
+ * Description：新浪新闻
  */
 const iconv=require('iconv-lite');
 const ajax=require('./spiderCommon').ajax;
@@ -24,10 +24,17 @@ async function getNewsList(params) {
         });
         let result=iconv.decode(getCookie,'gb2312');
         eval(result);
-        return jsonData;
+        return {
+            data: jsonData,
+            message: '',
+            succeed: true
+        };
     }catch (err){
-        console.log(err);
-        return null;
+        return {
+            data: [],
+            message: err,
+            succeed: false
+        };
     }
 }
 
