@@ -1,34 +1,23 @@
 {
-  "name": "news-spider",
-  "version": "0.1.0",
-  "private": true,
+  "name": "news-site",
+  "version": "1.0.0",
+  "description": "新闻信息综合展示网站",
+  "main": "index.js",
   "scripts": {
-    "start": "node bin/www",
-    "dev": "./node_modules/.bin/nodemon bin/www",
-    "prd": "pm2 start bin/www",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": ""
   },
-  "dependencies": {
-    "cheerio": "^1.0.0-rc.2",
-    "debug": "^2.6.3",
-    "iconv-lite": "^0.4.21",
-    "koa": "^2.2.0",
-    "koa-bodyparser": "^3.2.0",
-    "koa-convert": "^1.2.0",
-    "koa-json": "^2.0.2",
-    "koa-logger": "^2.0.1",
-    "koa-onerror": "^1.2.1",
-    "koa-router": "^7.1.1",
-    "koa-static": "^3.0.0",
-    "koa-views": "^5.2.1",
-    "octonode": "^0.9.2",
-    "pug": "^2.0.0-rc.1",
-    "request": "^2.85.0",
-    "request-promise": "^4.2.2",
-    "superagent": "^3.8.2",
-    "superagent-charset": "^1.2.0"
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zhouzhili/news-spider.git"
   },
-  "devDependencies": {
-    "nodemon": "^1.8.1"
-  }
+  "keywords": [
+    "news",
+    "site"
+  ],
+  "author": "zzl",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/zhouzhili/news-spider/issues"
+  },
+  "homepage": "https://github.com/zhouzhili/news-spider#readme"
 }

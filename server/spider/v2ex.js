@@ -10,7 +10,7 @@ function getV2exList() {
     return new Promise((resolve, reject) => {
         ajax.get(url).then(data => {
             let result = [];
-            let d = eval(data);
+            let d = JSON.parse(data);
             if (d && d.length > 0) {
                 d.forEach((item, index) => {
                     result.push({
