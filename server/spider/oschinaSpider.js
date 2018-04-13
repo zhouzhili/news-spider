@@ -20,7 +20,7 @@ function getOsChinaNewsList() {
                 let link = href.slice(0, 4) === 'http' ? href : 'https://www.oschina.net' + href;
                 newsObj.push({
                     title: $a.text(),
-                    link: link
+                    url: link
                 });
             });
             resolve({

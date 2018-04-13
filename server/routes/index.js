@@ -1,17 +1,13 @@
-const router = require('koa-router')()
+const sinaSpider = require('../spider/sinaSpider')
 
-router.get('/', async (ctx, next) => {
-    ctx.body = 'hello';
-})
 
-router.get('/string', async (ctx, next) => {
-    ctx.body = 'koa2 string'
-})
+module.exports = function (router) {
+    router.get('/sinaList', async (ctx, next) => {
+        let col = ctx.request.body.col || '';
+        let type = ctx.request.body.type || '';
+        let num = ctx.request.body.num || '';
+        return await sinaSpider.getNewsList({col, type, num});
+    });
+};
 
-router.get('/json', async (ctx, next) => {
-    ctx.body = {
-        title: 'koa2 json'
-    }
-})
 
-module.exports = router

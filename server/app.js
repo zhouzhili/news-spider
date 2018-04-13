@@ -4,9 +4,9 @@ const json = require('koa-json')
 const onerror = require('koa-onerror')
 const bodyparser = require('koa-bodyparser')
 const logger = require('koa-logger')
+const cors = require('koa2-cors')
 const path = require('path')
-const index = require('./routes/index')
-const users = require('./routes/users')
+const RouterLoader = require('./middlewares/RouterLoader');
 
 // error handler
 onerror(app)
@@ -15,6 +15,10 @@ onerror(app)
 app.use(bodyparser({
     enableTypes: ['json', 'form', 'text']
 }))
+
+//
+app.use(cors())
+
 app.use(json())
 app.use(logger())
 //static directory
@@ -28,8 +32,7 @@ app.use(async (ctx, next) => {
 })
 
 // routes
-app.use(index.routes(), index.allowedMethods())
-app.use(users.routes(), users.allowedMethods())
+app.use(RouterLoader(app));
 
 // error-handling
 app.on('error', (err, ctx) => {

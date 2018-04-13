@@ -50,11 +50,3 @@ function getGitHubTrending(query) {
     })
 }
 
-getGitHubTrending().then(resp => {
-    if (resp.succeed) {
-        console.log(resp.data)
-    } else {
-        console.log(resp.message)
-    }
-});
-

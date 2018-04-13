@@ -18,7 +18,7 @@ function getZhihuDailyList() {
                 let href = url + div.find('a').attr('href');
                 let title = div.find('span').text();
                 listArray.push({
-                    href,
+                    url: href,
                     title
                 });
             });

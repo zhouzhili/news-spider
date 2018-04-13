@@ -3,8 +3,8 @@
  * DateTime: 2018/4/9 11:23
  * Description：新浪新闻
  */
-const iconv=require('iconv-lite');
-const ajax=require('./spiderCommon').ajax;
+const iconv = require('iconv-lite');
+const ajax = require('./spiderCommon').ajax;
 
 /**
  * 获取新浪新闻信息
@@ -15,21 +15,21 @@ const ajax=require('./spiderCommon').ajax;
  * @returns jsonData
  */
 async function getNewsList(params) {
-    let p=params?params:{col:89,type:2,num:10};
-    let newsUrl=`http://roll.news.sina.com.cn/interface/rollnews_ch_out_interface.php?col=${p.col}&type=${p.type}&num=${p.num}`;
-    try{
-        let getCookie=await ajax.get({
-            url:newsUrl,
-            encoding:null
+    let p = params ? params : {col: 89, type: 2, num: 10};
+    let newsUrl = `http://roll.news.sina.com.cn/interface/rollnews_ch_out_interface.php?col=${p.col}&type=${p.type}&num=${p.num}`;
+    try {
+        let getCookie = await ajax.get({
+            url: newsUrl,
+            encoding: null
         });
-        let result=iconv.decode(getCookie,'gb2312');
+        let result = iconv.decode(getCookie, 'gb2312');
         eval(result);
         return {
-            data: jsonData,
+            data: jsonData.list,
             message: '',
             succeed: true
         };
-    }catch (err){
+    } catch (err) {
         return {
             data: [],
             message: err,
@@ -38,9 +38,6 @@ async function getNewsList(params) {
     }
 }
 
-// getNewsList().then(function (data) {
-//     console.log(data);
-// });
-
-
-
+module.exports = {
+    getNewsList
+};
