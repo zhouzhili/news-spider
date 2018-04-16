@@ -11,6 +11,23 @@ div {
     box-sizing: border-box;
 }
 
+.loading-wrap {
+    background-color: #d8d8d8a8;
+    height: calc(100% - 47px);
+    width: 100%;
+    position: absolute;
+    top: 47px;
+    left: 0;
+}
+
+.loading {
+    background-image: url('../images/loading_b.gif');
+    height: 128px;
+    width: 128px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+}
 #root {
     height: 100%;
 }

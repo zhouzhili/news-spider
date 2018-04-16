@@ -6,7 +6,7 @@
 const ajax = require('./spiderCommon').ajax;
 const cheerio = require('cheerio');
 
-function getZhihuDailyList() {
+module.exports.getZhihuDailyList = function () {
     let url = 'http://daily.zhihu.com';
     return new Promise((resolve, reject) => {
         ajax.get(url).then(data => {

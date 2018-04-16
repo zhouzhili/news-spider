@@ -3,8 +3,8 @@
  * DateTime: 2018/4/13 16:05
  * Description：
  */
-import React, {Component, PropTypes} from 'react'
-import '../css/header.css'
+import React, {Component} from 'react'
+import '../assets/css/header.css'
 
 export default class Header extends Component {
     render() {

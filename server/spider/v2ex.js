@@ -5,7 +5,7 @@
  */
 const ajax = require('./spiderCommon').ajax;
 
-function getV2exList() {
+module.exports.getV2exList = function () {
     let url = 'https://www.v2ex.com/api/topics/hot.json';
     return new Promise((resolve, reject) => {
         ajax.get(url).then(data => {
@@ -18,7 +18,7 @@ function getV2exList() {
                         url: item.url,
                         content: item.content_rendered,
                         replies: item.replies,
-                        created: item.created
+                        time: item.created
                     })
                 });
             }

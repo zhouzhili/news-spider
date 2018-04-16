@@ -6,7 +6,7 @@
 const ajax = require('./spiderCommon').ajax;
 const cheerio = require('cheerio');
 
-function getGitHubTrending(query) {
+module.exports.getGitHubTrending = function (query) {
     //weekly,monthly
     let url = query ? 'https://github.com/trending' : `https://github.com/trending?since=${query}`;
     return new Promise((resolve, reject) => {
@@ -28,8 +28,8 @@ function getGitHubTrending(query) {
                 //星
                 let star = $(mt[0]).find('a').eq(0).text().replace(/\s*|\t|\r|\n/g, '');
                 result.push({
-                    name,
-                    href,
+                    title: name,
+                    url: href,
                     desc,
                     language,
                     star

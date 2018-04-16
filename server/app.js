@@ -7,6 +7,7 @@ const logger = require('koa-logger')
 const cors = require('koa2-cors')
 const path = require('path')
 const RouterLoader = require('./middlewares/RouterLoader');
+const handleError = require('./middlewares/handleError');
 
 // error handler
 onerror(app)
@@ -29,8 +30,9 @@ app.use(async (ctx, next) => {
     await next()
     const ms = new Date() - start
     console.log(`${ctx.method} ${ctx.url} - ${ms}ms`)
-})
-
+});
+//自定义错误处理
+app.use(handleError());
 // routes
 app.use(RouterLoader(app));
 

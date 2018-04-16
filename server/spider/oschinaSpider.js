@@ -6,9 +6,8 @@
 const ajax=require('./spiderCommon').ajax;
 const cheerio = require('cheerio');
 
-const osChinaUrl='https://www.oschina.net/news';
-
-function getOsChinaNewsList() {
+module.exports.getOsChinaNewsList = function () {
+    let osChinaUrl = 'https://www.oschina.net/news';
     return new Promise((resolve, reject) => {
         ajax.get({url: osChinaUrl}).then(data => {
             let $ = cheerio.load(data);
