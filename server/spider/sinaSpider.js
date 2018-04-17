@@ -15,7 +15,7 @@ const ajax = require('./spiderCommon').ajax;
  * @returns jsonData
  */
 async function getNewsList(params) {
-    let p = params ? params : {col: 89, type: 2, num: 10};
+    let p = params ? params : {col: 89, type: '', num: 10};
     let newsUrl = `http://roll.news.sina.com.cn/interface/rollnews_ch_out_interface.php?col=${p.col}&type=${p.type}&num=${p.num}`;
     try {
         let getCookie = await ajax.get({
@@ -24,6 +24,7 @@ async function getNewsList(params) {
         });
         let result = iconv.decode(getCookie, 'gb2312');
         eval(result);
+
         return {
             data: jsonData.list,
             message: '',
@@ -37,6 +38,7 @@ async function getNewsList(params) {
         };
     }
 }
+
 
 module.exports = {
     getNewsList
