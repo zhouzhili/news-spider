@@ -8,7 +8,6 @@
 }
 
 .newItem a {
-    font-size: 20px;
     color: #222;
     font-weight: 700;
     text-decoration: none;
@@ -26,7 +25,7 @@
 
 .newItem span.time {
     color: #909090;
-    font-size: 14px;
+    font-size: 12px;
     margin-left: 5px;
 }
 
