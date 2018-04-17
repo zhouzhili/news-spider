@@ -4,24 +4,24 @@
     padding-top: 20px;
 }
 
-.nav > span {
-    font-size: 24px;
-    color: #e01f54;
-    font-weight: bolder;
-}
-
 .nav > ul {
     padding: 0;
 }
 
 .nav > ul > li {
-    font-size: 18px;
     line-height: 40px;
     padding: 3px;
     margin: 3px 0;
     list-style: none;
     cursor: pointer;
 }
+
+.nav > span {
+    font-size: 20px;
+    color: #e01f54;
+    font-weight: bolder;
+}
+
 
 .nav > ul > li:hover {
     background-color: #e01f54;
