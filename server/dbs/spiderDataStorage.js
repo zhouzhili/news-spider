@@ -5,18 +5,24 @@
  */
 const connection = require('./connection');
 const mongoose = require('mongoose');
+const moment=require('moment');
 
 module.exports = async function (spiderMethod, modelName) {
     try {
-        let hour = new Date().getHours();
-        let Schema = new mongoose.Schema({
-            data: Object,
-            succeed: Boolean,
-            message: String,
-            hour: Number
-        });
+        let hour = moment().format('YYYY-MM-DD:HH:mm:ss');
+        let model;
 
-        let model = mongoose.model(modelName, Schema);
+        if(mongoose.models[modelName]){
+            model=mongoose.models[modelName];
+        }else {
+            let Schema = new mongoose.Schema({
+                data: Object,
+                succeed: Boolean,
+                message: String,
+                hour: String
+            });
+            model = mongoose.model(modelName, Schema);
+        }
         let data = await spiderMethod();
         let storage = {...data, hour};
         return await model.create(storage);

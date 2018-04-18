@@ -16,17 +16,19 @@ const moment = require('moment');
 function storageLog(results) {
     let fileName = moment().format('YYYY-MM-DD');
     let hour = new Date().getHours();
+    let now=moment().format("HH:mm:ss");
     results.forEach((item, index) => {
-        let status = 'succeed', info = '';
+        let status = 'succeed', info = 'succeed';
         if (!item.result.succeed) {
+            status='error';
             info = item.result;
         }
-        let msg = `${hour}--${status}--${item.name}:${info}\n`;
+        let msg = `${now}--${status}--${item.name}: ${info}\n`;
         fs.writeFile(`c:\\logs\\${fileName}.txt`, msg, {flag: 'a'}, function (err) {
             if (err) {
-                console.log(`${fileName}:${hour}写入${item.name}失败`, err);
+                console.log(`${fileName}:${now} 写入${item.name}失败`, err);
             } else {
-                console.log(`${fileName}:${hour}写入${item.name}成功`);
+                console.log(`${fileName}:${now} 写入${item.name}成功`);
             }
         })
     })
