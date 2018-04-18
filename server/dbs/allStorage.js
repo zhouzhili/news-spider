@@ -33,7 +33,7 @@ function storageLog(results) {
 }
 
 //执行所有爬虫的存储
-async function storageAll() {
+module.exports = async function () {
     let sina = await spiderDataStorage(sinaSpider.getNewsList, 'sinas');
     let osChina = await spiderDataStorage(osChianSpider.getOsChinaNewsList, 'oschinas');
     let zhiHu = await spiderDataStorage(zhihuSpider.getZhihuDailyList, 'zhihus');
