@@ -20,7 +20,7 @@ export default class Navigation extends Component {
             current: 0
         };
         //主机地址
-        this.host = 'localhost';
+        this.host = 'localhost:8000';
     }
 
     sectionClickHandle = (item, index) => {
