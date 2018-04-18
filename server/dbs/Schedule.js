@@ -6,13 +6,18 @@
 const schedule = require('node-schedule');
 const allStorage = require('./allStorage');
 
+//半小时执行一次
 function mySchedule() {
     let rule = new schedule.RecurrenceRule();
-    rule.second = 2;
+    rule.minute = [0, 30];
     schedule.scheduleJob(rule, function () {
         console.log('执行爬取任务,' + new Date().toLocaleString());
-        //allStorage()
+        allStorage()
     })
 }
 
-mySchedule();
+try {
+    mySchedule();
+} catch (err) {
+    console.log(new Date().toLocaleString(), err);
+}
