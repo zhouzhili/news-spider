@@ -8,10 +8,10 @@ const allStorage = require('./allStorage');
 
 function mySchedule() {
     let rule = new schedule.RecurrenceRule();
-    rule.hour = 1;
+    rule.second = 2;
     schedule.scheduleJob(rule, function () {
         console.log('执行爬取任务,' + new Date().toLocaleString());
-        allStorage()
+        //allStorage()
     })
 }
 
