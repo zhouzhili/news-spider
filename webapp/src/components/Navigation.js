@@ -15,31 +15,34 @@ export default class Navigation extends Component {
     constructor(props) {
         super(props);
         this.sections = ['新闻', '日报', '开源', '趋势', '社区'];
+        //标记活跃的导航栏
         this.state = {
             current: 0
         };
+        //主机地址
+        this.host = 'localhost';
     }
 
     sectionClickHandle = (item, index) => {
-        let url = 'http://localhost:8000/sinaList';
+        let url = `http://${this.host}`;
         switch (item) {
             case '新闻':
-                url = 'http://localhost:8000/sinaList';
+                url = `${url}/sinaList`;
                 break;
             case '日报':
-                url = 'http://localhost:8000/zhihu';
+                url = `${url}/zhihu`;
                 break;
             case '开源':
-                url = 'http://localhost:8000/osChina';
+                url = `${url}/osChina`;
                 break;
             case '趋势':
-                url = 'http://localhost:8000/gitHub';
+                url = `${url}/gitHub`;
                 break;
             case '社区':
-                url = 'http://localhost:8000/v2ex';
+                url = `${url}/v2ex`;
                 break;
             default:
-                url = 'http://localhost:8000/sinaList'
+                url = `${url}/sinaList`;
         }
         this.setState({current: index});
         this.props.changeSection(url);
