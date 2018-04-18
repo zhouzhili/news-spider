@@ -30,7 +30,7 @@
 }
 
 .newItem span.index {
-    color: blue;
+    color: #ccc;
 }
 
 @media screen and (max-width: 800px) {
