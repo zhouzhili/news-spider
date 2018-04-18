@@ -4,7 +4,7 @@
     width: 50%;
     align-items: center;
     border-bottom: 1px solid #ddd;
-    padding: 20px 0;
+    padding: 0.2rem 0;
 }
 
 .newItem a {
@@ -25,10 +25,22 @@
 
 .newItem span.time {
     color: #909090;
-    font-size: 12px;
-    margin-left: 5px;
+    font-size: 0.1rem;
+    margin-left: 0.05rem;
 }
 
 .newItem span.index {
     color: blue;
+}
+
+@media screen and (max-width: 800px) {
+    .newItem {
+        width: 100%;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .time {
+        margin-left: 0.01rem;
+    }
 }

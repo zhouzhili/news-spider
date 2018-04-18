@@ -5,8 +5,8 @@
  */
 import React, {Component} from 'react'
 import './assets/css/app.css'
+import loading from './assets/images/loading_b.gif'
 import axios from 'axios'
-import Header from './components/Header'
 import Navigation from './components/Navigation'
 import NewsList from './components/NewsList'
 
@@ -39,14 +39,13 @@ export default class App extends Component {
 
     render() {
         let newsMain = this.state.loading ? (<div className="loading-wrap">
-                <div className="loading"></div>
+                <img src={loading}/>
             </div>)
             : (<NewsList list={this.state.newsList}/>);
         return (
             <div className="app">
-                <Header/>
+                <Navigation changeSection={this.getNewsListData}/>
                 <div className="main">
-                    <Navigation changeSection={this.getNewsListData}/>
                     {newsMain}
                 </div>
             </div>

@@ -1,36 +1,57 @@
 .nav {
-    min-width: 120px;
-    text-align: center;
-    padding-top: 20px;
+    display: flex;
+    align-items: center;
+    padding: 0 0.4rem;
+    background-color: #458fd2;
+    color: #fff;
 }
 
 .nav > ul {
+    display: flex;
     padding: 0;
+    margin: 0;
 }
 
 .nav > ul > li {
-    line-height: 40px;
-    padding: 3px;
-    margin: 3px 0;
+    line-height: 0.4rem;
+    padding: 0.01rem;
+    margin: 0.02rem 0.05rem;
     list-style: none;
     cursor: pointer;
+    width: 0.6rem;
+    text-align: center;
+    box-sizing: border-box;
 }
 
 .nav > span {
-    font-size: 20px;
-    color: #e01f54;
+    font-size: 0.2rem;
+    color: #fff;
     font-weight: bolder;
+    margin-right: 0.2rem;
 }
 
 
 .nav > ul > li:hover {
-    background-color: #e01f54;
-    color: #fff;
-    border-radius: 5px;
+    background-color: #31a1fa;
 }
 
 .active-li {
-    background-color: #e01f54;
+    background-color: #31a1fa;
     color: #fff;
-    border-radius: 5px;
+}
+
+/*屏幕小于800*/
+@media screen and (max-width: 800px) {
+    .nav {
+        padding: 0;
+        justify-content: center;
+    }
+
+    .nav > span {
+        display: none;
+    }
+
+    .nav > ul {
+        overflow-x: auto;
+    }
 }

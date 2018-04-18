@@ -2,6 +2,12 @@
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    margin-left: 40px;
+    margin-left: 0.2rem;
     overflow-y: auto;
+}
+
+@media screen and (max-width: 600px) {
+    .news-wrap {
+        margin: 0.02rem;
+    }
 }
