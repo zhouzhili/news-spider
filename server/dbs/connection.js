@@ -5,7 +5,7 @@
  */
 const mongoose = require('mongoose');
 
-mongoose.connect('mongodb://localhost:27017/test');
+mongoose.connect('mongodb://localhost:27017/news');
 const con = mongoose.createConnection('mongodb://localhost/news', {config: {autoIndex: false}});
 
 con.on('error', function (err) {

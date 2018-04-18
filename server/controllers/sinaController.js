@@ -27,7 +27,6 @@ async function insertNewsData() {
     });
     //新浪model
     let SinaNews = con.model('SinaNews', sinaSchema);
-
     try {
         let data = await sinaSpider.getNewsList(null);
         let resp = {
@@ -45,11 +44,6 @@ async function insertNewsData() {
         return resp;
     } catch (err) {
         console.log(err);
-        return {
-            data: [],
-            succeed: false,
-            message: err
-        };
     }
 }
 
