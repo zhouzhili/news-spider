@@ -13,24 +13,22 @@ const fs = require('fs');
 const moment = require('moment');
 
 //写入存储日志
-function storageLog(results) {
+function storageLog(resp, name) {
     let fileName = moment().format('YYYY-MM-DD');
-    let hour = new Date().getHours();
-    let now=moment().format("HH:mm:ss");
-    results.forEach((item, index) => {
-        let status = 'succeed', info = 'succeed';
-        if (!item.result.succeed) {
-            status='error';
-            info = item.result;
+    let time = moment().format("HH:mm:ss");
+
+    let status = 'succeed', info = 'succeed';
+    if (resp.result.length === 0) {
+        status = 'error';
+        info = resp.result;
+    }
+    let msg = `${time}--${status}--${name}: ${info}\n`;
+    fs.writeFile(`c:\\logs\\${fileName}.txt`, msg, {flag: 'a'}, function (err) {
+        if (err) {
+            console.log(`${fileName}:${time} 写入${name}失败`, err);
+        } else {
+            console.log(`${fileName}:${time} 写入${name}成功`);
         }
-        let msg = `${now}--${status}--${item.name}: ${info}\n`;
-        fs.writeFile(`c:\\logs\\${fileName}.txt`, msg, {flag: 'a'}, function (err) {
-            if (err) {
-                console.log(`${fileName}:${now} 写入${item.name}失败`, err);
-            } else {
-                console.log(`${fileName}:${now} 写入${item.name}成功`);
-            }
-        })
     })
 }
 

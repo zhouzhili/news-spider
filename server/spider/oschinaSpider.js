@@ -5,6 +5,7 @@
  */
 const ajax=require('./spiderCommon').ajax;
 const cheerio = require('cheerio');
+const moment = require('moment');
 
 module.exports.getOsChinaNewsList = function () {
     let osChinaUrl = 'https://www.oschina.net/news';
@@ -13,13 +14,15 @@ module.exports.getOsChinaNewsList = function () {
             let $ = cheerio.load(data);
             let news = $('#all-news').find('.title');
             let newsObj = [];
+            let now = moment().format('YYYY-MM-DD HH:mm:ss');
             news.each(function (index, item) {
                 let $a = $(this);
                 let href = $a.attr('href');
                 let link = href.slice(0, 4) === 'http' ? href : 'https://www.oschina.net' + href;
                 newsObj.push({
                     title: $a.text(),
-                    url: link
+                    url: link,
+                    createTime: now
                 });
             });
             resolve({

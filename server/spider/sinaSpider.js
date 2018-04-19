@@ -5,6 +5,7 @@
  */
 const iconv = require('iconv-lite');
 const ajax = require('./spiderCommon').ajax;
+const moment = require('moment');
 
 /**
  * 获取新浪新闻信息
@@ -23,8 +24,11 @@ async function getNewsList(params) {
             encoding: null
         });
         let result = iconv.decode(getCookie, 'gb2312');
+        let now = moment().format('YYYY-MM-DD HH:mm:ss');
         eval(result);
-
+        if (jsonData.list) {
+            jsonData.list.map(item => item.createTime = now);
+        }
         return {
             data: jsonData.list,
             message: '',

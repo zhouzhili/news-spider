@@ -5,6 +5,7 @@
  */
 const ajax = require('./spiderCommon').ajax;
 const cheerio = require('cheerio');
+const moment = require('moment');
 
 module.exports.getGitHubTrending = function (query) {
     //weekly,monthly
@@ -14,6 +15,7 @@ module.exports.getGitHubTrending = function (query) {
             let $ = cheerio.load(data);
             let $li = $('.repo-list').find('li');
             let result = [];
+            let now = moment().format('YYYY-MM-DD HH:mm:ss');
             $li.each(function (index, item) {
                 let $title = $(this).find('h3');
                 //名称
@@ -32,7 +34,8 @@ module.exports.getGitHubTrending = function (query) {
                     url: href,
                     desc,
                     language,
-                    star
+                    star,
+                    createTime: now
                 });
             });
             resolve({

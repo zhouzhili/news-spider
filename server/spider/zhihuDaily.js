@@ -5,6 +5,7 @@
  */
 const ajax = require('./spiderCommon').ajax;
 const cheerio = require('cheerio');
+const moment = require('moment');
 
 module.exports.getZhihuDailyList = function () {
     let url = 'http://daily.zhihu.com';
@@ -13,13 +14,15 @@ module.exports.getZhihuDailyList = function () {
             let $ = cheerio.load(data);
             let lists = $('.box');
             let listArray = [];
+            let now = moment().format('YYYY-MM-DD HH:mm:ss');
             lists.each(function (index, item) {
                 let div = $(this);
                 let href = url + div.find('a').attr('href');
                 let title = div.find('span').text();
                 listArray.push({
                     url: href,
-                    title
+                    title,
+                    createTime: now
                 });
             });
             resolve({
