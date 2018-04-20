@@ -16,7 +16,7 @@ const moment = require('moment');
  * @returns jsonData
  */
 async function getNewsList(params) {
-    let p = params ? params : {col: 89, type: '', num: 10};
+    let p = params ? params : {col: 89, type: '', num: 20};
     let newsUrl = `http://roll.news.sina.com.cn/interface/rollnews_ch_out_interface.php?col=${p.col}&type=${p.type}&num=${p.num}`;
     try {
         let getCookie = await ajax.get({

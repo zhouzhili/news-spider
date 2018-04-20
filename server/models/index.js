@@ -16,5 +16,5 @@ module.exports = {
     'githubs': gitHubModel,
     'oschinas': osChianModel,
     'v2exs': v2exModel,
-    'zhuhus': zhihuModel
+    'zhihus': zhihuModel
 };

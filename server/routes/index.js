@@ -1,36 +1,30 @@
-const sinaSpider = require('../spider/sinaSpider');
-const zhihuSpider = require('../spider/zhihuDaily');
-const osChinaSpider = require('../spider/oschinaSpider');
-const v2ex = require('../spider/v2ex');
-const gitHub = require('../spider/github');
+//路由
+const queryData = require('../dbs/queryData');
 
 module.exports = function (router) {
     router.get('/sinaList', async (ctx, next) => {
         await next();
-        let col = ctx.request.body.col || '';
-        let type = ctx.request.body.type || '';
-        let num = ctx.request.body.num || '';
-        ctx.response.body = await sinaSpider.getNewsList({col, type, num});
+        ctx.response.body = await queryData('sinas', 20);
     });
 
     router.get('/zhihu', async (ctx, next) => {
         await next();
-        ctx.response.body = await zhihuSpider.getZhihuDailyList();
+        ctx.response.body = await queryData('zhihus', 30);
     });
 
     router.get('/osChina', async (ctx, next) => {
         await next();
-        ctx.response.body = await osChinaSpider.getOsChinaNewsList();
+        ctx.response.body = await queryData('oschinas', 20);
     });
 
     router.get('/v2ex', async (ctx, next) => {
         await next();
-        ctx.response.body = await v2ex.getV2exList();
+        ctx.response.body = await queryData('v2exs', 8);
     });
 
     router.get('/gitHub', async (ctx, next) => {
         await next();
-        ctx.response.body = await gitHub.getGitHubTrending();
+        ctx.response.body = await queryData('githubs', 25);
     })
 };
 
