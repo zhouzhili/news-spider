@@ -2,7 +2,7 @@
 const queryData = require('../dbs/queryData');
 
 module.exports = function (router) {
-    router.get('/sinaList', async (ctx, next) => {
+    router.get('/sina', async (ctx, next) => {
         await next();
         ctx.response.body = await queryData('sinas', 20);
     });
@@ -12,7 +12,7 @@ module.exports = function (router) {
         ctx.response.body = await queryData('zhihus', 30);
     });
 
-    router.get('/osChina', async (ctx, next) => {
+    router.get('/oschina', async (ctx, next) => {
         await next();
         ctx.response.body = await queryData('oschinas', 20);
     });
@@ -22,7 +22,7 @@ module.exports = function (router) {
         ctx.response.body = await queryData('v2exs', 8);
     });
 
-    router.get('/gitHub', async (ctx, next) => {
+    router.get('/github', async (ctx, next) => {
         await next();
         ctx.response.body = await queryData('githubs', 25);
     })
