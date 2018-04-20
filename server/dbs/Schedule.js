@@ -70,7 +70,9 @@ function executeStorage(spiderMethod, modelName) {
 //从7点到19点，每隔四个小时爬取一次
 function newsSchedule() {
     let rule = new schedule.RecurrenceRule();
-    rule.hour = [7, 11, 15, 19];
+    rule.hour = [7, 11, 17, 19];
+    rule.minute = 30;
+    rule.second = 0;
     schedule.scheduleJob(rule, function () {
         executeStorage(v2exSpider.getV2exList, 'v2exs');
         executeStorage(sinaSpider.getNewsList, 'sinas');
@@ -81,6 +83,8 @@ function newsSchedule() {
 function sevenSchedule() {
     let rule = new schedule.RecurrenceRule();
     rule.hour = 7;
+    rule.minute = 0;
+    rule.second = 0;
     schedule.scheduleJob(rule, function () {
         executeStorage(osChianSpider.getOsChinaNewsList, 'oschinas');
         executeStorage(zhihuSpider.getZhihuDailyList, 'zhihus');
