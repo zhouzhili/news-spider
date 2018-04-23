@@ -19,31 +19,30 @@ export default class Navigation extends Component {
         this.state = {
             current: 0
         };
-        //主机地址
-        this.host = 'localhost:8000';
     }
 
     sectionClickHandle = (item, index) => {
-        let url = `http://${this.host}`;
+        let url = 'http://http://118.24.43.222:80';
         switch (item) {
             case '新闻':
-                url = `${url}/sinaList`;
+                url = `${url}/sina`;
                 break;
             case '日报':
                 url = `${url}/zhihu`;
                 break;
             case '开源':
-                url = `${url}/osChina`;
+                url = `${url}/oschina`;
                 break;
             case '趋势':
-                url = `${url}/gitHub`;
+                url = `${url}/github`;
                 break;
             case '社区':
                 url = `${url}/v2ex`;
                 break;
             default:
-                url = `${url}/sinaList`;
+                url = `${url}/sina`;
         }
+        console.log(url);
         this.setState({current: index});
         this.props.changeSection(url);
     };

@@ -25,11 +25,12 @@ export default class App extends Component {
 
     getNewsListData = (url) => {
         this.setState({loading: true});
-        let tagUrl = url || 'http://localhost:8000/sinaList';
+        let tagUrl = url || 'http://118.24.43.222:80/sina';
         axios.get(tagUrl).then(resp => {
+            console.log(url, resp);
             this.setState({loading: false});
             if (resp.status === 200 && resp.data.succeed) {
-                this.setState({newsList: resp.data.data});
+                this.setState({newsList: resp.data.content});
             }
         }).catch((err) => {
             console.log(err);
