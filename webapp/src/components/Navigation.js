@@ -22,7 +22,7 @@ export default class Navigation extends Component {
     }
 
     sectionClickHandle = (item, index) => {
-        let url = 'http://http://118.24.43.222:80';
+        let url = 'http://118.24.43.222:80';
         switch (item) {
             case '新闻':
                 url = `${url}/sina`;
