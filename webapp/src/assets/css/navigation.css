@@ -13,14 +13,19 @@
 }
 
 .nav > ul > li {
+    list-style: none;
+}
+
+.nav > ul > li > a {
+    display: inline-block;
     line-height: 0.4rem;
     padding: 0.01rem;
     margin: 0.02rem 0.05rem;
-    list-style: none;
     cursor: pointer;
     width: 0.6rem;
     text-align: center;
     box-sizing: border-box;
+    text-decoration: none;
 }
 
 .nav > span {

@@ -4,61 +4,28 @@
  * Description：
  */
 import React, {Component} from 'react'
-import PropTypes from 'prop-types'
+import {NavLink} from 'react-router-dom'
 import '../assets/css/navigation.css'
 
 export default class Navigation extends Component {
-    static propTypes = {
-        changeSection: PropTypes.func
-    };
-
     constructor(props) {
         super(props);
-        this.sections = ['新闻', '日报', '开源', '趋势', '社区'];
-        //标记活跃的导航栏
-        this.state = {
-            current: 0
-        };
     }
-
-    sectionClickHandle = (item, index) => {
-        let url = 'http://118.24.43.222:80';
-        switch (item) {
-            case '新闻':
-                url = `${url}/sina`;
-                break;
-            case '日报':
-                url = `${url}/zhihu`;
-                break;
-            case '开源':
-                url = `${url}/oschina`;
-                break;
-            case '趋势':
-                url = `${url}/github`;
-                break;
-            case '社区':
-                url = `${url}/v2ex`;
-                break;
-            default:
-                url = `${url}/sina`;
-        }
-        console.log(url);
-        this.setState({current: index});
-        this.props.changeSection(url);
-    };
 
     render() {
         return (
             <div className="nav">
                 <span>程序员头条</span>
                 <ul>
-                    {
-                        this.sections.map((item, index) => {
-                            let className = this.state.current === index ? 'active-li' : '';
-                            return <li className={className} key={index}
-                                       onClick={() => this.sectionClickHandle(item, index)}>{item}</li>
-                        })
-                    }
+                    <li>
+                        <NavLink to="/" active="true" activeClassName="active-li">新浪</NavLink>
+                    </li>
+                    <li>
+                        <NavLink to="/zhihu" activeClassName="active-li">日报</NavLink>
+                    </li>
+                    <li>
+                        <NavLink to="/oschina" activeClassName="active-li">开源</NavLink>
+                    </li>
                 </ul>
             </div>
         )
