@@ -20,12 +20,12 @@ export default class Navigation extends Component {
                     <li>
                         <NavLink to="/" active="true" activeClassName="active-li">新浪</NavLink>
                     </li>
-                    <li>
-                        <NavLink to="/zhihu" activeClassName="active-li">日报</NavLink>
-                    </li>
-                    <li>
-                        <NavLink to="/oschina" activeClassName="active-li">开源</NavLink>
-                    </li>
+                    {/*<li>*/}
+                    {/*<NavLink to="/zhihu" activeClassName="active-li">日报</NavLink>*/}
+                    {/*</li>*/}
+                    {/*<li>*/}
+                    {/*<NavLink to="/oschina" activeClassName="active-li">开源</NavLink>*/}
+                    {/*</li>*/}
                 </ul>
             </div>
         )
