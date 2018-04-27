@@ -23,7 +23,7 @@ export default class NewsComponent extends Component {
                         <span className="time">{moment(item.time * 1000).format('YYYY-MM-DD HH:mm:ss')}</span>);
                 }
                 return (
-                    <div className="newItem">
+                    <div className="newItem" key={item._id}>
                         <div>
                             <span className="index">{index + 1}、</span>
                             <a href={item.url} target="_blank">{item.title}</a>

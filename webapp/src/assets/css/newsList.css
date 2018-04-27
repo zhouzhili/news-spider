@@ -4,8 +4,15 @@
     flex-wrap: wrap;
     margin-left: 0.2rem;
     overflow-y: auto;
+    width: 100%;
+    justify-content: center;
 }
 
+.error-info {
+    font-size: 0.16rem;
+    color: #ccc;
+    font-weight: 800;
+}
 @media screen and (max-width: 600px) {
     .news-wrap {
         margin: 0.02rem;

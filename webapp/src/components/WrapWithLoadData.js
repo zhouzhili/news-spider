@@ -15,12 +15,13 @@ export default (WrappedComponent, url) => {
             super(props);
             this.state = {
                 showLoading: true,
-                newsList: []
+                newsList: [],
+                error: false
             }
         }
 
         componentDidMount() {
-            let requestUrl = `http://118.24.43.222:80/${url}`;
+            let requestUrl = `http://118.24.43.222:80${url}`;
             console.log(requestUrl);
             axios.get(requestUrl).then(resp => {
                 this.setState({showLoading: false});
@@ -29,19 +30,18 @@ export default (WrappedComponent, url) => {
                 }
             }).catch((err) => {
                 console.log(err);
-                this.setState({showLoading: false});
+                this.setState({showLoading: false, error: true});
             });
         }
 
         render() {
             let Main = (
                 <div className="news-wrap">
-                    <WrappedComponent newsList={this.state.newsList}/>
+                    {this.state.error ? (<p className="error-info">获取数据出错</p>)
+                        : <WrappedComponent newsList={this.state.newsList}/>}
                 </div>
             );
-            return (
-                this.state.showLoading ? <Loading/> : Main
-            )
+            return this.state.showLoading ? <Loading/> : Main;
         }
     }
 
