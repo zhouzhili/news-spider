@@ -6,8 +6,9 @@ const bodyparser = require('koa-bodyparser')
 const logger = require('koa-logger')
 const cors = require('koa2-cors')
 const path = require('path')
-const RouterLoader = require('./middlewares/RouterLoader');
+//const RouterLoader = require('./middlewares/RouterLoader');
 const handleError = require('./middlewares/handleError');
+const router = require('./routes');
 
 // error handler
 onerror(app)
@@ -34,7 +35,8 @@ app.use(async (ctx, next) => {
 //自定义错误处理
 app.use(handleError());
 // routes
-app.use(RouterLoader(app));
+app.use(router.routes(), router.allowedMethods());
+// app.use(RouterLoader(app));
 
 // error-handling
 app.on('error', (err, ctx) => {
