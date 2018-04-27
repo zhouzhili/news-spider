@@ -74,7 +74,7 @@ function newsSchedule() {
     rule.minute = 30;
     rule.second = 0;
     schedule.scheduleJob(rule, function () {
-        executeStorage(v2exSpider.getV2exList, 'v2exs');
+        //executeStorage(v2exSpider.getV2exList, 'v2exs');
         executeStorage(sinaSpider.getNewsList, 'sinas');
     })
 }
