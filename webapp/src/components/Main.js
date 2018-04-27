@@ -12,19 +12,31 @@ import GitHub from './GitHub'
 export default class Main extends Component {
     renderComponent(path) {
         let comObj = {
-            '/news': NewsComponent,
-            '/daily': NewsComponent,
-            '/open': NewsComponent,
-            '/git': GitHub
+            '/news': {
+                component: NewsComponent,
+                url: '/sina'
+            },
+            '/daily': {
+                component: NewsComponent,
+                url: '/zhihu'
+            },
+            '/open': {
+                component: NewsComponent,
+                url: '/oschina'
+            },
+            '/git': {
+                component: GitHub,
+                url: '/github'
+            },
         };
-        let url = path === '/' ? '/sina' : path;
-        let NewsCom = WrapWithLoadData(comObj[url], url);
+        let url = path === '/' ? '/news' : path;
+        let NewsCom = WrapWithLoadData(comObj[url].component, comObj[url].url);
         return (<NewsCom/>);
     }
     render() {
         return (
             <Switch>
-                <Route exact path="/news" render={(props) => this.renderComponent(props.match.path)}/>
+                <Route exact path="/" render={(props) => this.renderComponent(props.match.path)}/>
                 <Route exact path="/daily" render={(props) => this.renderComponent(props.match.path)}/>
                 <Route exact path="/open" render={(props) => this.renderComponent(props.match.path)}/>
                 <Route exact path="/git" render={(props) => this.renderComponent(props.match.path)}/>

@@ -17,13 +17,13 @@ export default class Navigation extends Component {
                         <NavLink to="/" exact activeClassName="active-li">新闻</NavLink>
                     </li>
                     <li>
-                        <NavLink to="/zhihu" exact activeClassName="active-li">杂谈</NavLink>
+                        <NavLink to="/daily" exact activeClassName="active-li">杂谈</NavLink>
                     </li>
                     <li>
-                        <NavLink to="/oschina" exact activeClassName="active-li">开源</NavLink>
+                        <NavLink to="/open" exact activeClassName="active-li">开源</NavLink>
                     </li>
                     <li>
-                        <NavLink to="/github" exact activeClassName="active-li">GitHub</NavLink>
+                        <NavLink to="/git" exact activeClassName="active-li">GitHub</NavLink>
                     </li>
                 </ul>
             </div>
