@@ -12,10 +12,10 @@ import GitHub from './GitHub'
 export default class Main extends Component {
     renderComponent(path) {
         let comObj = {
-            '/sina': NewsComponent,
-            '/zhihu': NewsComponent,
-            '/oschina': NewsComponent,
-            '/github': GitHub
+            '/news': NewsComponent,
+            '/daily': NewsComponent,
+            '/open': NewsComponent,
+            '/git': GitHub
         };
         let url = path === '/' ? '/sina' : path;
         let NewsCom = WrapWithLoadData(comObj[url], url);
@@ -24,10 +24,10 @@ export default class Main extends Component {
     render() {
         return (
             <Switch>
-                <Route exact path="/" render={(props) => this.renderComponent(props.match.path)}/>
-                <Route exact path="/zhihu" render={(props) => this.renderComponent(props.match.path)}/>
-                <Route exact path="/oschina" render={(props) => this.renderComponent(props.match.path)}/>
-                <Route exact path="/github" render={(props) => this.renderComponent(props.match.path)}/>
+                <Route exact path="/news" render={(props) => this.renderComponent(props.match.path)}/>
+                <Route exact path="/daily" render={(props) => this.renderComponent(props.match.path)}/>
+                <Route exact path="/open" render={(props) => this.renderComponent(props.match.path)}/>
+                <Route exact path="/git" render={(props) => this.renderComponent(props.match.path)}/>
             </Switch>
         )
     }
