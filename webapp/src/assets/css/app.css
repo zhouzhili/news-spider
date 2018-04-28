@@ -31,7 +31,7 @@ div {
     display: flex;
     flex-direction: column;
     height: 100%;
-    font-size: 0.12rem;
+    font-size: 0.14rem;
 }
 
 .main {

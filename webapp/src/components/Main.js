@@ -5,41 +5,19 @@
  */
 import React, {Component} from 'react'
 import {Switch, Route} from 'react-router-dom'
-import WrapWithLoadData from './WrapWithLoadData'
-import NewsComponent from './NewsComponent'
-import GitHub from './GitHub'
+import RouterConf from './RouteConf'
 
 export default class Main extends Component {
-    renderComponent(path) {
-        let comObj = {
-            '/news': {
-                component: NewsComponent,
-                url: '/sina'
-            },
-            '/daily': {
-                component: NewsComponent,
-                url: '/zhihu'
-            },
-            '/open': {
-                component: NewsComponent,
-                url: '/oschina'
-            },
-            '/git': {
-                component: GitHub,
-                url: '/github'
-            },
-        };
-        let url = path === '/' ? '/news' : path;
-        let NewsCom = WrapWithLoadData(comObj[url].component, comObj[url].url);
-        return (<NewsCom/>);
-    }
     render() {
         return (
             <Switch>
-                <Route exact path="/" render={(props) => this.renderComponent(props.match.path)}/>
-                <Route exact path="/daily" render={(props) => this.renderComponent(props.match.path)}/>
-                <Route exact path="/open" render={(props) => this.renderComponent(props.match.path)}/>
-                <Route exact path="/git" render={(props) => this.renderComponent(props.match.path)}/>
+                {
+                    RouterConf.map((item, index) => {
+                        return (
+                            <Route exact={item.exact} key={item.path} path={item.path} component={item.component}/>
+                        )
+                    })
+                }
             </Switch>
         )
     }
