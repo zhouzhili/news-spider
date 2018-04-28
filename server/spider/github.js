@@ -18,17 +18,17 @@ module.exports.getGitHubTrending = function (query) {
             let now = moment().format('YYYY-MM-DD HH:mm:ss');
             $li.each(function (index, item) {
                 let $title = $(this).find('h3');
-                //名称
-                let name = $title.text().replace(/\s*|\t|\r|\n/g, '');
+                //名称 去除前后空格，换行，制表符
+                let name = $title.text().replace(/(^\s*)|(\s*$)|\t|\r|\n/g, '');
                 //链接
                 let href = 'https://github.com' + $($title[0]).find('a').attr('href');
                 //描述
-                let desc = $(this).find('.py-1').text().replace(/\s*|\t|\r|\n/g, '');
+                let desc = $(this).find('.py-1').text().replace(/(^\s*)|(\s*$)|\t|\r|\n/g, '');
                 let mt = $(this).find('.f6');
                 //语言
-                let language = $(mt[0]).find('span').eq(2).text().replace(/\s*|\t|\r|\n/g, '');
+                let language = $(mt[0]).find('span').eq(2).text().replace(/(^\s*)|(\s*$)|\t|\r|\n/g, '');
                 //星
-                let star = $(mt[0]).find('a').eq(0).text().replace(/\s*|\t|\r|\n/g, '');
+                let star = $(mt[0]).find('a').eq(0).text().replace(/(^\s*)|(\s*$)|\t|\r|\n/g, '');
                 result.push({
                     title: name,
                     url: href,
