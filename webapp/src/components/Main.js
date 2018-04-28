@@ -4,7 +4,7 @@
  * Description：
  */
 import React, {Component} from 'react'
-import {Switch, Route} from 'react-router-dom'
+import {Switch, Route, Redirect} from 'react-router-dom'
 import RouterConf from './RouteConf'
 
 export default class Main extends Component {
@@ -18,6 +18,7 @@ export default class Main extends Component {
                         )
                     })
                 }
+                <Redirect to="/sina"/>
             </Switch>
         )
     }

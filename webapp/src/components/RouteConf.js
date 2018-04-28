@@ -15,7 +15,7 @@ function wrapCommonNewsComponent(url, component = NewsComponent) {
 export default [
     {
         exact: true,
-        path: '/',
+        path: '/sina',
         component: wrapCommonNewsComponent('/sina')
     },
     {

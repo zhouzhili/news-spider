@@ -4,7 +4,7 @@
  * Description：
  */
 import React, {Component} from 'react'
-import {BrowserRouter} from 'react-router-dom'
+import {HashRouter} from 'react-router-dom'
 import './assets/css/app.css'
 import Navigation from './components/Navigation'
 import Main from './components/Main'
@@ -16,14 +16,14 @@ export default class App extends Component {
 
     render() {
         return (
-            <BrowserRouter>
+            <HashRouter>
                 <div className="app">
                     <Navigation/>
                     <div className="main">
                         <Main/>
                     </div>
                 </div>
-            </BrowserRouter>
+            </HashRouter>
         )
     }
 }

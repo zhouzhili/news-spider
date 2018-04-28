@@ -23,5 +23,10 @@
 2. 高阶组件其实就是一个函数，对组件进行封装返回一个新的组件，主要用途是封装组件相同的操作，
 例如初始化相关数据，封装AJAX请求等其他内容，返回的是一个新的数组。
 3. 路由主要组件为BrowserRouter，Router，Navigation，Link组件
+4. BrowserRouter为现代浏览器H5提供的支持，需要服务器端的支持，而HashRouter是hash地址，例如
+访问/abc,BrowserRouter:http://localhost:80/abc，而HashRouter是http://localhost:80/#/abc
+因此，如果直接访问/abc将读取服务器根目录下的abc文件，如果不存在将会报404错误，而hash地址则访问的是
+根目录下的index页面#号后面的地址不会做处理，由前端处理，因此使用BrowserRouter刷新后会报404错误，
+而HashRouter不会报错。
 
 

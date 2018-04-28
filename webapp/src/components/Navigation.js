@@ -14,7 +14,7 @@ export default class Navigation extends Component {
                 <span>程序员头条</span>
                 <ul>
                     <li>
-                        <NavLink to="/" exact activeClassName="active-li">新闻</NavLink>
+                        <NavLink to="/sina" exact activeClassName="active-li">新闻</NavLink>
                     </li>
                     <li>
                         <NavLink to="/daily" exact activeClassName="active-li">杂谈</NavLink>
