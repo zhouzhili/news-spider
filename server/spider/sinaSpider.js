@@ -3,9 +3,9 @@
  * DateTime: 2018/4/9 11:23
  * Description：新浪新闻
  */
-const iconv = require('iconv-lite');
-const ajax = require('./spiderCommon').ajax;
-const moment = require('moment');
+const iconv = require('iconv-lite')
+const ajax = require('./spiderCommon').ajax
+const moment = require('moment')
 
 /**
  * 获取新浪新闻信息
@@ -16,34 +16,35 @@ const moment = require('moment');
  * @returns jsonData
  */
 async function getNewsList(params) {
-    let p = params ? params : {col: 89, type: '', num: 20};
-    let newsUrl = `http://roll.news.sina.com.cn/interface/rollnews_ch_out_interface.php?col=${p.col}&type=${p.type}&num=${p.num}`;
-    try {
-        let getCookie = await ajax.get({
-            url: newsUrl,
-            encoding: null
-        });
-        let result = iconv.decode(getCookie, 'gb2312');
-        let now = moment().format('YYYY-MM-DD HH:mm:ss');
-        eval(result);
-        if (jsonData.list) {
-            jsonData.list.map(item => item.createTime = now);
-        }
-        return {
-            data: jsonData.list,
-            message: '',
-            succeed: true
-        };
-    } catch (err) {
-        return {
-            data: [],
-            message: err,
-            succeed: false
-        };
+  let p = params ? params : { col: 89, type: '', num: 20 }
+  let newsUrl = `http://roll.news.sina.com.cn/interface/rollnews_ch_out_interface.php?col=${
+    p.col
+  }&type=${p.type}&num=${p.num}`
+  try {
+    let getCookie = await ajax.get({
+      url: newsUrl,
+      encoding: null
+    })
+    let result = iconv.decode(getCookie, 'gb2312')
+    let now = moment().format('YYYY-MM-DD HH:mm:ss')
+    eval(result)
+    if (jsonData.list) {
+      jsonData.list.map(item => (item.createTime = now))
     }
+    return {
+      data: jsonData.list,
+      message: '',
+      succeed: true
+    }
+  } catch (err) {
+    return {
+      data: [],
+      message: err,
+      succeed: false
+    }
+  }
 }
 
-
 module.exports = {
-    getNewsList
-};
+  getNewsList
+}
